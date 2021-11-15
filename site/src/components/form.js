@@ -198,9 +198,9 @@ export default function Form() {
         }),
       })
         .then(() => {
-          alert('send');
+          alert('Wiadomość została wysłana!');
         })
-        .catch((error) => alert(error));
+        .catch((error) => console.log(error));
     },
   });
   return (

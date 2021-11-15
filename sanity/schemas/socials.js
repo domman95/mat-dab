@@ -4,6 +4,12 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'type',
+      title: 'Typ (np. facebook, phone, email)',
+      type: 'string',
+      description: 'Nie ruszać bez uzgodnienia z dostawcą strony!'
+    },
+    {
       name: 'name',
       title: 'Nazwa portalu społecznościowego',
       type: 'string',

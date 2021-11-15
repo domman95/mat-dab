@@ -110,7 +110,9 @@ export default function Contact() {
         {allSanityContact.nodes.map(({ id, type, value }) => (
           <li key={id} className="social">
             {findIcon(type)}
-            <a href={`${typeOfHref(type)}${value}`}>{value}</a>
+            <a href={`${typeOfHref(type)}${value}`}>
+              {type === 'email' ? 'napisz do nas' : value}
+            </a>
           </li>
         ))}
       </ul>

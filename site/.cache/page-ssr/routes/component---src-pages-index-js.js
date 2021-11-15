@@ -8053,22 +8053,22 @@ function Form() {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: encode({
-          'form-name': 'contact-form',
+          'form-name': 'contact',
           ...data
         })
       }).then(() => {
-        alert('send');
-      }).catch(error => alert(error));
+        alert('Wiadomość została wysłana!');
+      }).catch(error => console.log(error));
     }
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(StyledForm, {
     onSubmit: formik.handleSubmit,
-    name: "contact-form",
+    name: "contact",
     "data-netlify": "true",
     "data-netlify-honeypot": "bot-field"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "hidden",
-    name: "form-name"
+    name: "contact"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "hidden",
     name: "bot-field"
@@ -8081,6 +8081,7 @@ function Form() {
     onChange: formik.handleChange,
     value: formik.values.name,
     id: "name",
+    name: "name",
     type: "text",
     placeholder: "wpisz swoje imi\u0119..."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -8092,6 +8093,7 @@ function Form() {
     onChange: formik.handleChange,
     value: formik.values.email,
     id: "email",
+    name: "email",
     type: "email",
     placeholder: "wpisz sw\xF3j e-mail..."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -8103,6 +8105,7 @@ function Form() {
     onChange: formik.handleChange,
     value: formik.values.message,
     id: "message",
+    name: "message",
     type: "text",
     placeholder: "wpisz tre\u015B\u0107 wiadomo\u015Bci..."
   }), formik.touched.checkbox && formik.errors.checkbox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
