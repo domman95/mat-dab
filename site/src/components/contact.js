@@ -46,6 +46,32 @@ const StyledContact = styled.div`
   }
 `;
 
+const findIcon = (input) => {
+  switch (input) {
+    case 'facebook':
+      return <FaFacebookF />;
+    case 'instagram':
+      return <FaInstagram />;
+    case 'phone':
+      return <FaPhoneAlt />;
+    case 'email':
+      return <HiOutlineMail />;
+    default:
+      break;
+  }
+};
+
+const typeOfHref = (input) => {
+  switch (input) {
+    case 'phone':
+      return 'tel:';
+    case 'email':
+      return 'mailto:';
+    default:
+      break;
+  }
+};
+
 export default function Contact() {
   const { allSanitySocials, allSanityContact } = useStaticQuery(graphql`
     query socialsAndContacts {
@@ -53,6 +79,7 @@ export default function Contact() {
         nodes {
           id
           name
+          type
           slug {
             current
           }
@@ -62,6 +89,7 @@ export default function Contact() {
       allSanityContact {
         nodes {
           id
+          type
           name
           value
         }
@@ -73,25 +101,18 @@ export default function Contact() {
     <StyledContact>
       <h3 className="title">skontaktuj się z nami</h3>
       <ul className="social-media">
-        {console.log(allSanitySocials)}
-        {allSanitySocials.nodes.map(({ id, name, slug, url }) => (
+        {allSanitySocials.nodes.map(({ id, type, slug, url }) => (
           <li key={id} className="social">
-            <FaFacebookF />
+            {findIcon(type)}
             <a href={url}>{slug.current}</a>
           </li>
         ))}
-        <li className="social">
-          <FaInstagram />
-          <a href="">instagram/matdab</a>
-        </li>
-        <li className="social">
-          <FaPhoneAlt />
-          <a href="">+48 667 172 626</a>
-        </li>
-        <li className="social">
-          <HiOutlineMail />
-          <a href="">matdab@gmail.com</a>
-        </li>
+        {allSanityContact.nodes.map(({ id, type, value }) => (
+          <li key={id} className="social">
+            {findIcon(type)}
+            <a href={`${typeOfHref(type)}${value}`}>{value}</a>
+          </li>
+        ))}
       </ul>
     </StyledContact>
   );

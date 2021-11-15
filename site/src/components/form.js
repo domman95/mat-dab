@@ -139,6 +139,12 @@ const StyledForm = styled.form`
   }
 `;
 
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+};
+
 export default function Form() {
   const validate = (values) => {
     const errors = {};
@@ -181,12 +187,30 @@ export default function Form() {
       checkbox: false,
     },
     validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (data) => {
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'contact-form',
+          ...data,
+        }),
+      })
+        .then(() => {
+          alert('send');
+        })
+        .catch((error) => alert(error));
     },
   });
   return (
-    <StyledForm onSubmit={formik.handleSubmit}>
+    <StyledForm
+      onSubmit={formik.handleSubmit}
+      name="contact-form"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" />
+      <input type="hidden" name="bot-field" />
+
       <label htmlFor="name">Twoje imię:</label>
       {formik.touched.name && formik.errors.name && (
         <p className="errorsMessage">{formik.errors.name}</p>

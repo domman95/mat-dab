@@ -80,11 +80,11 @@ const StyledCard = styled.article`
 export default function OfferCard({ title, description, image }) {
   return (
     <StyledCard id="offerCard">
-      <SanityImage className="img" {...image} alt="" />
+      <SanityImage className="img" {...image} alt={title} />
       <div className="content">
         <Title offer>{title}</Title>
         <Paragraph>{description}</Paragraph>
-        <Button>skontaktuj się z nami</Button>
+        <Button link="/#contact">skontaktuj się z nami</Button>
       </div>
     </StyledCard>
   );

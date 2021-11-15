@@ -101,9 +101,7 @@ export default function Proof() {
     <CarouselStyled {...settings}>
       {nodes.map(({ id, content, author }) => (
         <StyledProof key={id}>
-          {'"'}
-          {content}
-          {'"'}
+          {`"${content}"`}
           <span className="signature">~{author}</span>
         </StyledProof>
       ))}

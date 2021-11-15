@@ -1,4 +1,6 @@
 import React from 'react';
+import SanityImage from 'gatsby-plugin-sanity-image';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Button from './button';
 
@@ -23,9 +25,10 @@ const StyledGallery = styled.section`
     }
   }
 
-  img {
+  .image {
     border-radius: var(--radius);
     width: 100%;
+    height: 240px;
     object-fit: cover;
     margin-bottom: 20px;
     box-shadow: var(--shadow);
@@ -37,33 +40,28 @@ const StyledGallery = styled.section`
 `;
 
 export default function RealizationGallery() {
+  const { allSanityRealization } = useStaticQuery(graphql`
+    query images {
+      allSanityRealization {
+        nodes {
+          id
+          title
+          image {
+            ...ImageWithPreview
+          }
+        }
+      }
+    }
+  `);
+
+  const { nodes } = allSanityRealization;
+
   return (
     <StyledGallery>
       <div className="gallery">
-        <img
-          src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80"
-          alt=""
-        />
-        <img
-          src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80"
-          alt=""
-        />
-        <img
-          src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80"
-          alt=""
-        />
-        <img
-          src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80"
-          alt=""
-        />
-        <img
-          src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80"
-          alt=""
-        />
-        <img
-          src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80"
-          alt=""
-        />
+        {nodes.slice(0, 6).map(({ id, title, image }) => (
+          <SanityImage key={id} className="image" {...image[0]} alt={title} />
+        ))}
       </div>
       <Button link="realizacje">zobacz wszystkie realizacje</Button>
     </StyledGallery>
