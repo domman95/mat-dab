@@ -5354,7 +5354,7 @@ function OfferCard({
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(gatsby_plugin_sanity_image__WEBPACK_IMPORTED_MODULE_1__["default"], Object.assign({
     className: "img"
   }, image, {
-    alt: ""
+    alt: title
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_title__WEBPACK_IMPORTED_MODULE_4__["default"], {

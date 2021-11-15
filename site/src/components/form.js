@@ -188,11 +188,12 @@ export default function Form() {
     },
     validate,
     onSubmit: (data) => {
+      console.log(data);
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
-          'form-name': 'contact-form',
+          'form-name': 'contact',
           ...data,
         }),
       })
@@ -205,10 +206,10 @@ export default function Form() {
   return (
     <StyledForm
       onSubmit={formik.handleSubmit}
-      name="contact-form"
+      name="contact"
       data-netlify="true"
       data-netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" />
+      <input type="hidden" name="contact" />
       <input type="hidden" name="bot-field" />
 
       <label htmlFor="name">Twoje imię:</label>
