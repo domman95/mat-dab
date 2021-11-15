@@ -1,0 +1,35 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "my-project",
+  "author": "domman95",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "dev": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.13.2",
+    "formik": "^2.2.9",
+    "gatsby": "^4.1.4",
+    "gatsby-plugin-image": "^2.1.2",
+    "gatsby-plugin-sanity-image": "^0.10.0",
+    "gatsby-plugin-styled-components": "^4.13.0",
+    "gatsby-source-sanity": "^7.1.0",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.1"
+  }
+}
