@@ -221,6 +221,7 @@ export default function Form() {
         onChange={formik.handleChange}
         value={formik.values.name}
         id="name"
+        name="name"
         type="text"
         placeholder="wpisz swoje imię..."
       />
@@ -234,6 +235,7 @@ export default function Form() {
         onChange={formik.handleChange}
         value={formik.values.email}
         id="email"
+        name="email"
         type="email"
         placeholder="wpisz swój e-mail..."
       />
@@ -247,6 +249,7 @@ export default function Form() {
         onChange={formik.handleChange}
         value={formik.values.message}
         id="message"
+        name="message"
         type="text"
         placeholder="wpisz treść wiadomości..."
       />
