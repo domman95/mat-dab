@@ -21,6 +21,7 @@ const CarouselStyled = styled(Slider)`
 
   .slick-prev {
     left: 25px;
+    z-index: 100;
 
     &::before {
       color: var(--lightOrange);

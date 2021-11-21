@@ -11,9 +11,11 @@ const StyledSection = styled.section`
   border-radius: var(--radius);
   margin: 0 auto 10rem;
   box-shadow: var(--shadow);
+  width: 100%;
   height: ${({ header }) => header && '12rem'};
 
-  .illustration {
+  .illustration,
+  .errorContainer {
     width: 100%;
     max-width: 340px;
     margin-bottom: 2rem;
@@ -43,7 +45,8 @@ const StyledSection = styled.section`
     ${({ left }) =>
       left &&
       css`
-        .illustration {
+        .illustration,
+        .errorContainer {
           grid-column: 1 / 2;
         }
 
@@ -55,7 +58,8 @@ const StyledSection = styled.section`
     ${({ right }) =>
       right &&
       css`
-        .illustration {
+        .illustration,
+        .errorContainer {
           grid-column: 2 / -1;
         }
 

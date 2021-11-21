@@ -1,3 +1,6 @@
 {
-  "apiId": "642e8bf5-f766-48bf-a62a-f2454b39086e"
+  "apiId": "642e8bf5-f766-48bf-a62a-f2454b39086e",
+  "auth": {
+    "oauthClientId": "GNfXWapYuSIQR-b1XcnzZPjI5gnKLpCxSlTrliHPG-8"
+  }
 }

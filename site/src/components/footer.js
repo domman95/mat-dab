@@ -78,7 +78,7 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <Link to="/" className="private-policy">
+      <Link to="/polityka-prywatnosci" className="private-policy">
         polityka prywatności
       </Link>
       <p className="copyright">

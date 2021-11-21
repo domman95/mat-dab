@@ -8,6 +8,7 @@ import Paragraph from '../components/paragraph';
 import SectionHeader from '../components/sectionHeader';
 import SEO from '../components/seo';
 import Title from '../components/title';
+import Masonry from 'react-masonry-css';
 
 const CarouselStyled = styled(Slider)`
   width: 100%;
@@ -21,20 +22,6 @@ const CarouselStyled = styled(Slider)`
       height: 100%;
     }
   }
-
-  .slick-next,
-  .slick-prev {
-    &::before {
-      display: none;
-    }
-  }
-
-  .slick-dots {
-    button::before {
-      font-size: 10px;
-    }
-    bottom: 20px;
-  }
 `;
 
 const StyledMain = styled.main`
@@ -44,17 +31,30 @@ const StyledMain = styled.main`
     max-width: 1200px;
     margin: 2rem auto 0;
 
-    columns: 3 300px;
-    column-gap: 2rem;
+    .my-masonry-grid {
+      display: -webkit-box; /* Not needed if autoprefixing */
+      display: -ms-flexbox; /* Not needed if autoprefixing */
+      display: flex;
+      margin-left: -30px; /* gutter size offset */
+      width: auto;
+    }
+    .my-masonry-grid_column {
+      padding-left: 30px; /* gutter size */
+      background-clip: padding-box;
+    }
 
     .realization {
-      display: inline-block;
       margin-bottom: 2rem;
       width: 100%;
       box-shadow: var(--shadow);
+      overflow: hidden;
 
-      img {
+      .slider {
         width: 100%;
+
+        img {
+          width: 100%;
+        }
       }
 
       .details {
@@ -82,27 +82,40 @@ export default function RealizationPage({ data }) {
     autoplay: true,
   };
 
+  const breakpointsColumnsObj = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
+
   return (
     <Layout>
       <SEO title="Realizacje" />
       <StyledMain>
         <SectionHeader>realizacje</SectionHeader>
         <div className="container">
-          {nodes.map(({ id, title, content, image }) => (
-            <div className="realization" key={id}>
-              <CarouselStyled {...settings}>
-                {image.map((item) => (
-                  <div className="wrapper" key={item.asset._id}>
-                    <SanityImage {...item} alt={title} />
-                  </div>
-                ))}
-              </CarouselStyled>
-              <div className="details">
-                <Title>{title}</Title>
-                <Paragraph>{content}</Paragraph>
+          <Masonry
+            breakpointCols={breakpointsColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column">
+            {nodes.map(({ id, title, content, image }) => (
+              <div className="realization" key={id}>
+                <div className="slider">
+                  <CarouselStyled {...settings}>
+                    {image.map((item) => (
+                      <div className="wrapper" key={item.asset._id}>
+                        <SanityImage {...item} alt={title} />
+                      </div>
+                    ))}
+                  </CarouselStyled>
+                </div>
+                <div className="details">
+                  <Title>{title}</Title>
+                  <Paragraph>{content}</Paragraph>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </Masonry>
         </div>
       </StyledMain>
     </Layout>
