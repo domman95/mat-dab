@@ -1,6 +1,5 @@
-import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import { FiHeart } from 'react-icons/fi';
 import styled from 'styled-components';
 import Dlwebdev from '../assets/dlwebdev.png';

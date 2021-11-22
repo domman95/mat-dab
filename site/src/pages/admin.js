@@ -25,7 +25,7 @@ export default function Admin() {
     if (isBrowser) {
       navigate('https://matdab.sanity.studio/desk', { replace: true });
     }
-  }, []);
+  }, [isBrowser]);
 
   return (
     <Layout>

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Layout from '../components/layout';
 import Paragraph from '../components/paragraph';
 import SectionHeader from '../components/sectionHeader';
-import SEO from '../components/seo';
+import Seo from '../components/seo';
 import Title from '../components/title';
 import Masonry from 'react-masonry-css';
 
@@ -90,7 +90,7 @@ export default function RealizationPage({ data }) {
 
   return (
     <Layout>
-      <SEO title="Realizacje" />
+      <Seo title="Realizacje" />
       <StyledMain>
         <SectionHeader>realizacje</SectionHeader>
         <div className="container">

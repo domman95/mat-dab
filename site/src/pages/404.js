@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Button from '../components/button';
 import Layout from '../components/layout';
 import Paragraph from '../components/paragraph';
-import Section from '../components/section';
 import Title from '../components/title';
 
 const Container = styled.main`

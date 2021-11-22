@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from '../components/button';
 import Paragraph from '../components/paragraph';
 import Section from '../components/section';
-import SEO from '../components/seo';
+import Seo from '../components/seo';
 import Title from '../components/title';
 import OfferPng from '../assets/offer.png';
 import OfferCard from '../components/offerCard';
@@ -41,13 +41,12 @@ const StyledMain = styled.main`
   }
 `;
 
-export default function OfferPage({data}) {
-  
-  const {nodes} = data.allSanityOffer;
+export default function OfferPage({ data }) {
+  const { nodes } = data.allSanityOffer;
 
   return (
     <Layout>
-      <SEO title="Oferta" />
+      <Seo title="Oferta" />
       <StyledMain>
         <Section>
           <SectionHeader>oferta</SectionHeader>
@@ -62,9 +61,14 @@ export default function OfferPage({data}) {
           </div>
         </Section>
         <div className="container" id="oferty">
-          {nodes.map(({id, name, content, image}) => 
-          <OfferCard key={id} title={name} description={content} image={image} />
-          )}
+          {nodes.map(({ id, name, content, image }) => (
+            <OfferCard
+              key={id}
+              title={name}
+              description={content}
+              image={image}
+            />
+          ))}
         </div>
       </StyledMain>
     </Layout>
@@ -73,15 +77,15 @@ export default function OfferPage({data}) {
 
 export const query = graphql`
   query Offer {
-    allSanityOffer(sort: {fields: name}) {
-    nodes {
-      id
-      name
-      content
-      image {
-        ...ImageWithPreview
+    allSanityOffer(sort: { fields: name }) {
+      nodes {
+        id
+        name
+        content
+        image {
+          ...ImageWithPreview
+        }
       }
     }
   }
-}
 `;
