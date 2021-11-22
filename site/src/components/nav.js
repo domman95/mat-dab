@@ -183,7 +183,7 @@ export default function Nav() {
           </li>
         </div>
         <li>
-          <Link to="#contact" className="navlink rounded">
+          <Link to="/#contact" className="navlink rounded">
             kontakt
           </Link>
         </li>

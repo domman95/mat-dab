@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-pages-404-js",
-    "path": "/404.html",
+    "componentChunkName": "component---src-pages-admin-js",
+    "path": "/admin/",
     "result": {"pageContext":{}},
     "staticQueryHashes": ["1748999444","1783426304","2429398484"]}

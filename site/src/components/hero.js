@@ -69,7 +69,7 @@ const StyledHeader = styled.header`
 
 export default function Hero() {
   return (
-    <StyledHeader>
+    <StyledHeader heroimg="">
       <img id="logo" src={logo} alt="mat-dab logo" />
       <article className="box">
         <ul>

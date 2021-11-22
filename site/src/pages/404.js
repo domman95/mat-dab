@@ -38,10 +38,9 @@ const Container = styled.main`
   }
 
   .errorContent {
-    max-width: 70%;
     margin: 3rem auto 0;
     padding: 2rem;
-    box-shadow: var(--shadow);
+    text-align: center;
 
     .paragraph {
       margin: 2rem 0;

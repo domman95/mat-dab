@@ -1,9 +1,10 @@
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import styled from 'styled-components';
 import Dlwebdev from '../assets/dlwebdev.png';
+import { findIcon } from './contact';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -64,19 +65,28 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer() {
+  const { allSanitySocials } = useStaticQuery(graphql`
+    query socials {
+      allSanitySocials {
+        nodes {
+          id
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  const { nodes } = allSanitySocials;
+
   return (
     <StyledFooter>
       <ul className="socials">
-        <li className="icon">
-          <a href="">
-            <FaFacebookF />
-          </a>
-        </li>
-        <li className="icon">
-          <a href="">
-            <FaInstagram />
-          </a>
-        </li>
+        {nodes.map(({ id, type, url }) => (
+          <li className="icon" key={id}>
+            <a href={url}>{findIcon(type)}</a>
+          </li>
+        ))}
       </ul>
       <Link to="/polityka-prywatnosci" className="private-policy">
         polityka prywatności
@@ -87,7 +97,7 @@ export default function Footer() {
       <p className="createdBy">
         Strona wykonana z <FiHeart className="heart" /> ️przez:
         <a href="https://dlwebdev.com">
-          <img src={Dlwebdev} alt="" />
+          <img src={Dlwebdev} alt="dlwebdev strony internetowe" />
         </a>
       </p>
     </StyledFooter>

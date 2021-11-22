@@ -46,7 +46,7 @@ const StyledContact = styled.div`
   }
 `;
 
-const findIcon = (input) => {
+export const findIcon = (input) => {
   switch (input) {
     case 'facebook':
       return <FaFacebookF />;
@@ -61,7 +61,7 @@ const findIcon = (input) => {
   }
 };
 
-const typeOfHref = (input) => {
+export const typeOfHref = (input) => {
   switch (input) {
     case 'phone':
       return 'tel:';
